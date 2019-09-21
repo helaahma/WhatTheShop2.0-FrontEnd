@@ -30,6 +30,7 @@ class AuthStore {
       const res = await instance.post("/api/login/", userData);
       const user = res.data;
       this.setUser(user.access);
+      navigation.replace("Profile");
     } catch (err) {
       console.log("something went wrong logging in");
     }

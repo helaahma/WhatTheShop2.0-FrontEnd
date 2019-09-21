@@ -3,8 +3,6 @@ import { observer } from "mobx-react";
 
 // NativeBase Components
 
-import Registration from "../Registration/index";
-
 import {
   Form,
   Item,
@@ -18,19 +16,19 @@ import {
 // Store
 import authStore from "../../stores/authStore";
 
-class Login extends Component {
+class Registration extends Component {
   state = {
     username: "",
-    password: ""
+    email: "",
+    password: "",
+    first_name: "",
+    last_name: ""
   };
 
   handlesubmit = () => {
-    authStore.login(this.state, this.props.navigation);
+    console.log("registration state", this.state);
+    authStore.registerUser(this.state, this.props.navigation);
   };
-
-  componentDidMount() {
-    if (authStore.user) this.props.navigation.replace("Profile");
-  }
 
   render() {
     return (
@@ -51,7 +49,15 @@ class Login extends Component {
                 onChangeText={username => this.setState({ username })}
               />
             </Item>
-            <Item last>
+            <Item>
+              <Input
+                placeholder="email"
+                autoCapitalize="none"
+                autoCorrect={false}
+                onChangeText={email => this.setState({ email })}
+              />
+            </Item>
+            <Item>
               <Input
                 placeholder="Password"
                 autoCapitalize="none"
@@ -60,17 +66,24 @@ class Login extends Component {
                 onChangeText={password => this.setState({ password })}
               />
             </Item>
-            <Button
-              full
-              style={{ marginBottom: 10, marginTop: 5 }}
-              onPress={this.handlesubmit}
-            >
-              <Text>Login</Text>
-            </Button>
-            <Button
-              full
-              onPress={() => this.props.navigation.navigate("Register")}
-            >
+            <Item>
+              <Input
+                placeholder="First Name"
+                autoCapitalize="none"
+                autoCorrect={false}
+                onChangeText={first_name => this.setState({ first_name })}
+              />
+            </Item>
+            <Item last>
+              <Input
+                placeholder="Last Name"
+                autoCapitalize="none"
+                autoCorrect={false}
+                onChangeText={last_name => this.setState({ last_name })}
+              />
+            </Item>
+
+            <Button full onPress={() => this.handlesubmit()}>
               <Text>Register</Text>
             </Button>
           </Form>
@@ -79,4 +92,4 @@ class Login extends Component {
     );
   }
 }
-export default observer(Login);
+export default observer(Registration);

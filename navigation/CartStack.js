@@ -1,11 +1,11 @@
 import { createStackNavigator } from "react-navigation-stack";
 
 // Components
-import LolScreen from "../components/Lol";
+import CartScreen from "../components/Cart";
 
-const LolStack = createStackNavigator(
+const CartStack = createStackNavigator(
   {
-    Lol: LolScreen
+    Cart: CartScreen
   },
   {
     defaultNavigationOptions: {
@@ -14,4 +14,4 @@ const LolStack = createStackNavigator(
   }
 );
 
-export default LolStack;
+export default CartStack;
