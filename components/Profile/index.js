@@ -1,20 +1,15 @@
-import React from "react";
+import React, { Component } from "react";
 
 // NativeBase Components
 import { Card, CardItem, Text, Button } from "native-base";
 
-const Profile = () => {
-  return (
-    <Card>
-      <CardItem>
-        <Button
-          danger
-          onPress={() => alert("You need to implement Logout n00b...")}
-        >
-          <Text>Logout</Text>
-        </Button>
-      </CardItem>
-    </Card>
-  );
-};
+class Profile extends Component {
+  render() {
+    return (
+      <Card>
+        <Text>I am a NOOB</Text>
+      </Card>
+    );
+  }
+}
 export default Profile;
