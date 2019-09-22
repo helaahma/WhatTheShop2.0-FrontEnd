@@ -1,16 +1,19 @@
 import React from "react";
 import { createStackNavigator } from "react-navigation";
+
+import MainScreen from "../components/Main";
+import WatchDetail from "../components/Home/watchDetail";
 import { Icon } from "native-base";
 
-import cartScreen from "../components/Cart/CartScreen";
-
-const CartStack = createStackNavigator(
+const MainStack = createStackNavigator(
   {
-    Cart: cartScreen
+    Main: MainScreen,
+    Detail: WatchDetail
   },
   {
+    initialRouteName: "Main",
     defaultNavigationOptions: ({ navigation }) => ({
-      title: "Cart",
+      title: "The Emporium",
       headerTintColor: "#FF7E5F",
       headerTitleStyle: { fontWeight: "bold" },
       headerStyle: { backgroundColor: "#351C4D" },
@@ -26,4 +29,4 @@ const CartStack = createStackNavigator(
   }
 );
 
-export default CartStack;
+export default MainStack;
