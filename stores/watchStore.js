@@ -10,6 +10,14 @@ class WatchStore {
   loading = true;
   query = "";
 
+  addWatch = async userData => {
+    try {
+      await instance.post("api/create/", watch_obj);
+      this.watches.push(watch_obj);
+    } catch (error) {
+      console.log("something went wrong registering", error.Date);
+    }
+  };
   fetchAllPost = async () => {
     try {
       const res = await instance.get("api/list/");
