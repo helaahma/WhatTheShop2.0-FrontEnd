@@ -2,7 +2,7 @@ import React from "react";
 import { createStackNavigator } from "react-navigation";
 import { Icon } from "native-base";
 
-import cartScreen from "../components/Cart/CartScreen";
+import cartScreen from "../components/Cart/cartScreen";
 
 const CartStack = createStackNavigator(
   {

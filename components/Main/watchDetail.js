@@ -17,7 +17,7 @@ import {
   Label
 } from "native-base";
 
-import cartStore from "../../stores/CartStore";
+import cartStore from "../../stores/cartStore";
 import AuthStore from "../../stores/authStore";
 
 class WatchDetail extends Component {
