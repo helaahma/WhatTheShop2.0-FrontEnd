@@ -27,7 +27,7 @@ class Registration extends Component {
 
   handlesubmit = () => {
     console.log("registration state", this.state);
-    authStore.registerUser(this.state, this.props.navigation);
+    authStore.setUser(this.state, this.props.navigation);
   };
 
   render() {

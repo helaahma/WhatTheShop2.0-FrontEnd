@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import authStore from "../../stores/authStore";
 import profileStore from "../../stores/profileStore";
+import watchStore from "../../stores/watchStore";
 
 import {
   Container,
