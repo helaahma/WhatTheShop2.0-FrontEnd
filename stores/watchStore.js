@@ -16,7 +16,6 @@ class WatchStore {
       const watches = res.data;
       this.watches = watches;
       this.loading = false;
-      //   console.log(this.posts[0].id);
     } catch (error) {
       console.log(error);
     }
@@ -30,8 +29,6 @@ class WatchStore {
     );
   }
   getWatch = watchId => {
-    // console.log("testttt", itemId);
-    // console.log("yyyyyyyyy", this.items);
     return this.watches.find(watchIn => +watchIn.id === +watchId);
   };
 }

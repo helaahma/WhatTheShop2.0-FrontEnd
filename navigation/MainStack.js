@@ -2,7 +2,7 @@ import React from "react";
 import { createStackNavigator } from "react-navigation";
 
 import MainScreen from "../components/Main";
-import WatchDetail from "../components/Home/watchDetail";
+import WatchDetail from "../components/Main/watchDetail";
 import { Icon } from "native-base";
 
 const MainStack = createStackNavigator(

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 // NativeBase Components
-import { Card, CardItem, Text, Button } from "native-base";
+
 import ProfilePage from "./ProfilePage";
 
 class Profile extends Component {

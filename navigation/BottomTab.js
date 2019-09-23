@@ -5,11 +5,13 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 // Navigators
 import ProfileStack from "./ProfileStack";
 import CartStack from "./CartStack";
+import MainStack from "./MainStack";
 
 const BottomTab = createBottomTabNavigator(
   {
     Profile: ProfileStack,
-    Cart: CartStack
+    Cart: CartStack,
+    Main: MainStack
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -21,6 +23,9 @@ const BottomTab = createBottomTabNavigator(
           iconType = "FontAwesome";
         } else if (routeName === "Profile") {
           iconName = "far fa-id-badge";
+          iconType = "FontAwesome";
+        } else if (routeName === "Main") {
+          iconName = "fas fa-home";
           iconType = "FontAwesome";
         }
         return (
