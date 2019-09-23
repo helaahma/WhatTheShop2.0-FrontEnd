@@ -33,6 +33,7 @@ class CartStore {
       const data = res.data;
       this.cart = data;
       this.total = watch.total;
+
       this.loading = false;
       console.log(data);
       console.log(watch.total);
@@ -51,6 +52,21 @@ class CartStore {
   checkoutCart() {
     this.carts = [];
   }
+  getHistoryOrder = async userId => {
+    try {
+      const res = await instance.get("api/history/");
+      const data = res.data;
+      this.carts = data;
+
+      this.history = this.carts.filter(
+        userCart => userCart.user === userId && userCart.status === true
+      );
+      this.loadingHistory = false;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   // get quantity() {
   //     let quantity = 0;
   //     this.items.forEach(item => (quantity = quantity + item.quantity));
