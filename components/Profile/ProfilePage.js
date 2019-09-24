@@ -37,7 +37,7 @@ class ProfilePage extends Component {
       return (
         <Container style={styles.container}>
           <Content>
-            <Thumbnail
+            {/* <Thumbnail
               style={{
                 width: 150,
                 height: 150,
@@ -51,7 +51,7 @@ class ProfilePage extends Component {
                     }
                   : require("../../assets/profile.png")
               }
-            />
+            /> */}
 
             <Text style={{ marginTop: 8, alignSelf: "center" }}>
               {user.username}

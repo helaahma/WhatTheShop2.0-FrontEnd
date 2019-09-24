@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, Button, Text, Content, Item, Input } from "native-base";
-import addressStore from "../stores/addressStore";
+import addressStore from "../../stores/addressStore";
 
 class EditAddress extends Component {
   state = {

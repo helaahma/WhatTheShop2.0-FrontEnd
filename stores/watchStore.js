@@ -41,7 +41,7 @@ class WatchStore {
   };
 }
 
-decorate(ItemStore, {
+decorate(WatchStore, {
   watches: observable,
   loading: observable,
   query: observable,

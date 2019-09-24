@@ -1,10 +1,83 @@
 import React, { Component } from "react";
-import WatchList from "./watchList";
+import { StyleSheet } from "react-native";
+import {
+  Container,
+  Header,
+  Content,
+  Card,
+  CardItem,
+  Thumbnail,
+  Text,
+  Button,
+  Icon,
+  Left,
+  Body,
+  Right,
+  Footer,
+  Input,
+  Form,
+  Item,
+  Spinner
+} from "native-base";
+import WatchCard from "./watchCard";
+import watchStore from "../../stores/watchStore";
+import { observer } from "mobx-react";
 
-class MainScreen extends Component {
+class WatchList extends Component {
+  handleSearch = query => {
+    console.log("query", query);
+    watchStore.query = query;
+  };
+
   render() {
-    return <WatchList navigation={this.props.navigation} />;
+    if (watchStore.loading) {
+      return (
+        <Container style={styles.container}>
+          <Content>
+            <Text>loading</Text>
+          </Content>
+        </Container>
+      );
+    }
+    // filteredwatches
+    let watchCard = watchStore.watches.map(watch => {
+      return (
+        <WatchCard
+          key={watch.id}
+          watch={watch}
+          navigation={this.props.navigation}
+        />
+      );
+    });
+
+    return (
+      <Container style={styles.container}>
+        <Content>
+          <Input
+            style={styles.textHigligted}
+            placeholder="Search..."
+            autoCapitalize="none"
+            autoCorrect={false}
+            onChangeText={this.handleSearch}
+          />
+          {watchCard}
+        </Content>
+      </Container>
+    );
   }
 }
 
-export default MainScreen;
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#422D56"
+  },
+  card: {
+    borderRadius: 4,
+    borderWidth: 0.5,
+    borderColor: "#116466",
+    backgroundColor: "#000000"
+  },
+  textHigligted: { color: "white" }
+});
+
+export default observer(WatchList);

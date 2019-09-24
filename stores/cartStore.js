@@ -26,7 +26,7 @@ class CartStore {
   addItemToCart = async watch => {
     const foundItem = this.carts.find(
       cartItem =>
-        cartItem.watches == watch.watches && cartItem.status == watch.status
+        cartItem.watch == watch.watches && cartItem.status == watch.status
     );
     try {
       const res = await instance.post(`create/cart/${watch.id}/`);
@@ -66,12 +66,6 @@ class CartStore {
       console.log(error);
     }
   };
-
-  // get quantity() {
-  //     let quantity = 0;
-  //     this.items.forEach(item => (quantity = quantity + item.quantity));
-  //     return quantity;
-  // }
 }
 
 decorate(CartStore, {
@@ -85,7 +79,7 @@ decorate(CartStore, {
   addItemToCart: action,
   removeItemFromCart: action,
   checkoutCart: action,
-  quantity: computed
+  filteredCarts: computed
 });
 
 const cartStore = new CartStore();

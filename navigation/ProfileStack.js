@@ -8,6 +8,7 @@ import EditProfile from "../components/Profile/editProfile";
 import Address from "../components/Address/Address";
 import EditAddress from "../components/Address/EditAddress";
 import ViewAddress from "../components/Address/ViewAddress";
+import MainScreen from "../components/Main";
 
 const ProfileStack = createStackNavigator(
   {
@@ -17,7 +18,8 @@ const ProfileStack = createStackNavigator(
     EditProfile: EditProfile,
     Address: Address,
     EditAddress: EditAddress,
-    ViewAddress: ViewAddress
+    ViewAddress: ViewAddress,
+    Main: MainScreen
   },
   {
     initialRouteName: "Login"

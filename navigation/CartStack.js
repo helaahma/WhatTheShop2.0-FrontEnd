@@ -1,6 +1,7 @@
 import React from "react";
-import { createStackNavigator } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
 import { Icon } from "native-base";
+import { navigation } from "react-navigation";
 
 import cartScreen from "../components/Cart/cartScreen";
 

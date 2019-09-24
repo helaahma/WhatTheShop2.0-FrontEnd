@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import { Image } from "react-native";
+import { Image, StyleSheet } from "react-native";
+import { observer } from "mobx-react";
 
 import {
   Container,
   Header,
+  Fab,
   Content,
   Card,
   CardItem,
