@@ -4,10 +4,11 @@ import { decorate, computed, observable } from "mobx";
 class ProfileStore {
   user = null;
 
-  retraiveUserProfile = async userID => {
+  retraiveUserProfile = async userobj => {
+    console.log(userobj);
     try {
       const res = await axios.get(
-        `http://127.0.0.1:8000/api/user/${userID.user_id}/data/`
+        `http://127.0.0.1:8000/api/user/detail/${userobj.user_id}/`
       );
       const user = res.data;
       this.user = user;

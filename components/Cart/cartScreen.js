@@ -4,7 +4,6 @@ import { observer } from "mobx-react";
 
 import {
   Container,
-  Header,
   Fab,
   Content,
   Card,

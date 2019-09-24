@@ -20,7 +20,9 @@ import { StyleSheet } from "react-native";
 class ProfilePage extends Component {
   componentDidMount() {
     const user = authStore.user;
-    profileStore.retreiveUserProfile(user);
+    if (user) {
+      profileStore.retraiveUserProfile(user);
+    }
   }
   render() {
     const user = profileStore.user;
@@ -37,35 +39,19 @@ class ProfilePage extends Component {
       return (
         <Container style={styles.container}>
           <Content>
-            {/* <Thumbnail
-              style={{
-                width: 150,
-                height: 150,
-                borderRadius: 150 / 2,
-                alignSelf: "center"
-              }}
-              source={
-                authStore.user.profile_image
-                  ? {
-                      uri: user.profile_image
-                    }
-                  : require("../../assets/profile.png")
-              }
-            /> */}
-
             <Text style={{ marginTop: 8, alignSelf: "center" }}>
-              {user.username}
+              {user.user.username}
             </Text>
 
             <ListItem>
               <Text>
-                Name: {user.first_name} {user.last_name}
+                Name: {user.user.first_name} {user.user.last_name}
               </Text>
             </ListItem>
             <ListItem>
-              <Text>Email: {user.email}</Text>
+              <Text>Email: {user.user.email}</Text>
             </ListItem>
-            {!user.profile.phone ? (
+            {!user.phone_number ? (
               <ListItem
                 Button
                 onPress={() =>
@@ -76,7 +62,7 @@ class ProfilePage extends Component {
               </ListItem>
             ) : (
               <ListItem>
-                <Text>Phone: {user.profile.phone}</Text>
+                <Text>Phone: {user.user.phone_number}</Text>
               </ListItem>
             )}
 
@@ -112,7 +98,7 @@ class ProfilePage extends Component {
                 </Right>
               </ListItem>
             )}
-            <ListItem
+            {/* <ListItem
               last
               Button
               style={{ marginTop: 5 }}
@@ -121,7 +107,7 @@ class ProfilePage extends Component {
               }
             >
               <Text>History Order</Text>
-            </ListItem>
+            </ListItem> */}
 
             <Button
               danger
