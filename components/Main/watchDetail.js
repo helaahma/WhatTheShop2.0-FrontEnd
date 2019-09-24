@@ -3,7 +3,6 @@ import { Image } from "react-native";
 
 import {
   Container,
-  Header,
   Content,
   Card,
   CardItem,

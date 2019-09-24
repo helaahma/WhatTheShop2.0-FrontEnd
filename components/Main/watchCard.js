@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Image, TouchableHighlight, StyleSheet } from "react-native";
 import {
   Container,
-  Header,
   Content,
   Card,
   CardItem,
