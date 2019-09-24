@@ -1,13 +1,11 @@
 import React from "react";
-import { createStackNavigator } from "react-navigation-stack";
 import { Icon } from "native-base";
-import { navigation } from "react-navigation";
-
-import cartScreen from "../components/Cart/cartScreen";
+import { createStackNavigator } from "react-navigation-stack";
+import CartScreen from "../components/Cart/cartScreen";
 
 const CartStack = createStackNavigator(
   {
-    Cart: cartScreen
+    Cart: CartScreen
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({

@@ -34,10 +34,11 @@ class AuthStore {
       console.error(err);
     }
   };
-  login = async userData => {
+  login = async (userData, navigation) => {
     try {
       const res = await instance.post("/api/login/", userData);
       const user = res.data;
+      console.log("[authStore.js] user: ", user);
       this.setUser(user.access);
       navigation.replace("Profile");
     } catch (err) {

@@ -20,26 +20,24 @@ import {
 } from "native-base";
 
 import cartStore from "../../stores/cartStore";
-import AuthStore from "../../stores/authStore";
+import authStore from "../../stores/authStore";
 
 let total = 0;
 class cartScreen extends Component {
   handleCheckout = () => {
     console.log(authStore.user);
-    if (authStore.user) {
-      if (cartStore.carts) {
-        const cart = cartStore.cart;
-        const status = true;
-        cartStore.checkout(cart, status);
-        cartStore.carts = [];
-        alert("thank you for shopping");
-      }
-    } else {
-      this.props.navigation.navigate("ProfileTab");
+    if (cartStore.carts) {
+      const cart = cartStore.cart;
+      const status = true;
+      cartStore.checkout(cart, status);
+      cartStore.carts = [];
+      alert("thank you for shopping");
     }
   };
 
   render() {
+    if (authStore.user) this.props.navigation.navigate("ProfileTab");
+
     let cartItems;
 
     if (cartStore.carts) {

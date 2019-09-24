@@ -39,8 +39,7 @@ class WatchList extends Component {
         </Container>
       );
     }
-    // filteredwatches
-    let watchCard = watchStore.watches.map(watch => {
+    let watchCard = watchStore.filteredWatches.map(watch => {
       return (
         <WatchCard
           key={watch.id}
