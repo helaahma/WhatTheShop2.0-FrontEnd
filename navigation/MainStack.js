@@ -13,7 +13,7 @@ const MainStack = createStackNavigator(
   {
     initialRouteName: "Main",
     defaultNavigationOptions: ({ navigation }) => ({
-      title: "The Emporium",
+      title: "Watch U Want",
       headerTintColor: "#FF7E5F",
       headerTitleStyle: { fontWeight: "bold" },
       headerStyle: { backgroundColor: "#351C4D" },

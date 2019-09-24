@@ -29,9 +29,7 @@ class AddressStore {
   };
   DeleteAddress = async (addressID, navigation) => {
     try {
-      await axios.delete(
-        `http://127.0.0.1:8000/api/address/${addressID}/delete/`
-      );
+      await axios.delete(`http://127.0.0.1:8000/address/${addressID}/delete/`);
       navigation.replace("Profile");
     } catch (error) {
       console.log(error);
