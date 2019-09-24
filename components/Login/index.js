@@ -3,8 +3,6 @@ import { observer } from "mobx-react";
 
 // NativeBase Components
 
-import Registration from "../Registration/index";
-
 import {
   Form,
   Item,

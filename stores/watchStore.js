@@ -32,8 +32,8 @@ class WatchStore {
   get filteredWatches() {
     return this.watches.filter(
       watch =>
-        watch.name.toLowerCase().includes(this.query.toLowerCase()) ||
-        item.description.toLowerCase().includes(this.query.toLowerCase())
+        watch.model_name.toLowerCase().includes(this.query.toLowerCase()) ||
+        watch.brand.name.toLowerCase().includes(this.query.toLowerCase())
     );
   }
   getWatch = watchId => {
