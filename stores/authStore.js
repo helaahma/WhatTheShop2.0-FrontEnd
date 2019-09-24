@@ -24,7 +24,16 @@ class AuthStore {
       this.user = null;
     }
   };
-
+  register = async (userData, navigation) => {
+    try {
+      const res = await instance.post("api/register/", userData);
+      const data = res.data;
+      this.setUser(data.access);
+      navigation.replace("Main");
+    } catch (err) {
+      console.error(err);
+    }
+  };
   login = async userData => {
     try {
       const res = await instance.post("/api/login/", userData);

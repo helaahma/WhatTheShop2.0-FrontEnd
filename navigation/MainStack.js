@@ -1,5 +1,5 @@
 import React from "react";
-import { createStackNavigator } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
 
 import MainScreen from "../components/Main";
 import WatchDetail from "../components/Main/watchDetail";

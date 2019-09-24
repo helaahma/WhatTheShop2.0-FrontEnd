@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Button, Header, Content, Item, Input } from "native-base";
 import { Text } from "react-native";
-import addressStore from "../stores/addressStore";
+import addressStore from "../../stores/addressStore";
 
 class Address extends Component {
   state = {

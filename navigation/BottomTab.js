@@ -19,13 +19,13 @@ const BottomTab = createBottomTabNavigator(
         const { routeName } = navigation.state;
         let iconName;
         if (routeName === "Cart") {
-          iconName = "fas fa-shopping-cart";
+          iconName = "shopping-cart";
           iconType = "FontAwesome";
         } else if (routeName === "Profile") {
-          iconName = "far fa-id-badge";
+          iconName = "id-badge";
           iconType = "FontAwesome";
         } else if (routeName === "Main") {
-          iconName = "fas fa-home";
+          iconName = "home";
           iconType = "FontAwesome";
         }
         return (
