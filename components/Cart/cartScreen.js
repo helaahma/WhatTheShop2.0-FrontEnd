@@ -27,15 +27,15 @@ class cartScreen extends Component {
   handleCheckout = () => {
     console.log(authStore.user);
     if (authStore.user) {
-      if (cartStore.carts) {
-        const cart = cartStore.cart;
+      if (cartStore.carts.length) {
+        const cart = cartStore.carts;
         const status = true;
         cartStore.checkOutCart(cart, status);
         cartStore.carts = [];
         alert("thank you for shopping");
       }
     } else {
-      this.props.navigation.navigate("List");
+      this.props.navigation.navigate("Login");
     }
   };
 
