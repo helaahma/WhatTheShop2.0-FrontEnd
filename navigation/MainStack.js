@@ -16,15 +16,7 @@ const MainStack = createStackNavigator(
       title: "Watch U Want",
       headerTintColor: "#FF7E5F",
       headerTitleStyle: { fontWeight: "bold" },
-      headerStyle: { backgroundColor: "#351C4D" },
-      headerLeft: {
-        /* <Icon
-          name="menu"
-          style={{ color: "#FF7E5F" }}
-          type="MaterialCommunityIcons"
-          onPress={() => navigation.openDrawer()}
-        /> */
-      }
+      headerStyle: { backgroundColor: "#351C4D" }
     })
   }
 );

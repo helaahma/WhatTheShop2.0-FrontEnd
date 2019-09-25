@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Image, StyleSheet } from "react-native";
+import { View, Image, StyleSheet } from "react-native";
 import { observer } from "mobx-react";
 
 import {
@@ -19,27 +19,30 @@ import {
 } from "native-base";
 
 import cartStore from "../../stores/cartStore";
+import CartItem from "./CartItem";
 import authStore from "../../stores/authStore";
 
 let total = 0;
 class cartScreen extends Component {
   handleCheckout = () => {
     console.log(authStore.user);
-    if (cartStore.carts) {
-      const cart = cartStore.cart;
-      const status = true;
-      cartStore.checkout(cart, status);
-      cartStore.carts = [];
-      alert("thank you for shopping");
+    if (authStore.user) {
+      if (cartStore.carts) {
+        const cart = cartStore.cart;
+        const status = true;
+        cartStore.checkOutCart(cart, status);
+        cartStore.carts = [];
+        alert("thank you for shopping");
+      }
+    } else {
+      this.props.navigation.navigate("List");
     }
   };
 
   render() {
-    if (authStore.user) this.props.navigation.navigate("ProfileTab");
-
     let cartItems;
 
-    if (cartStore.carts) {
+    if (cartStore.carts.length) {
       cartItems = cartStore.carts.map(item => {
         return <CartItem key={item.id} item={item} />;
       });
@@ -57,7 +60,7 @@ class cartScreen extends Component {
           <Icon name="check-circle" type="FontAwesome" />
           <Button style={{ backgroundColor: "#o2c39a" }} />
         </Fab>
-        <Label>$ {cartStore.total}</Label>
+        <Label>KWD {cartStore.total}</Label>
       </Container>
     );
   }

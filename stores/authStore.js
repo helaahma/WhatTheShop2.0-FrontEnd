@@ -4,8 +4,8 @@ import { AsyncStorage } from "react-native";
 import jwt_decode from "jwt-decode";
 import profileStore from "./profileStore";
 
-const instance = axios.create({
-  baseURL: "http://127.0.0.1:8000/"
+export const instance = axios.create({
+  baseURL: "http://127.0.0.1:8000/api/"
 });
 
 class AuthStore {
@@ -16,20 +16,20 @@ class AuthStore {
       // Save token to localStorage
       await AsyncStorage.setItem("myToken", token);
       // Set token to Auth header
-      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+      instance.defaults.headers.common.Authorization = `Bearer ${token}`;
       // Set current user
       user_obj = jwt_decode(token);
       this.user = user_obj;
       profileStore.retraiveUserProfile(user_obj);
     } else {
       await AsyncStorage.removeItem("myToken");
-      delete axios.defaults.headers.common.Authorization;
+      delete instance.defaults.headers.common.Authorization;
       this.user = null;
     }
   };
   register = async (userData, navigation) => {
     try {
-      const res = await instance.post("api/register/", userData);
+      const res = await instance.post("register/", userData);
       const data = res.data;
       this.setUser(data.access);
       navigation.replace("Main");
@@ -39,7 +39,7 @@ class AuthStore {
   };
   login = async (userData, navigation) => {
     try {
-      const res = await instance.post("/api/login/", userData);
+      const res = await instance.post("login/", userData);
       const user = res.data;
       console.log("[authStore.js] user: ", user);
       this.setUser(user.access);

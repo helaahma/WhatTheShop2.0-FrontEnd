@@ -6,10 +6,7 @@ class AddressStore {
 
   CreateAddress = async userData => {
     try {
-      const res = await axios.post(
-        "http://127.0.0.1:8000/api/address/create/",
-        userData
-      );
+      const res = await instance.post("address/create/", userData);
       const addressData = res.data;
       console.log(addressData);
       this.address = addressData;
@@ -19,17 +16,14 @@ class AddressStore {
   };
   EditAddress = async (addressID, userData) => {
     try {
-      await axios.put(
-        `http://127.0.0.1:8000/api/address/${addressID}/edit/`,
-        userData
-      );
+      await instance.put(`${addressID}/edit/`, userData);
     } catch (error) {
       console.log(error);
     }
   };
   DeleteAddress = async (addressID, navigation) => {
     try {
-      await axios.delete(`http://127.0.0.1:8000/address/${addressID}/delete/`);
+      await instance.delete(`${addressID}/delete/`);
       navigation.replace("Profile");
     } catch (error) {
       console.log(error);

@@ -27,10 +27,11 @@ class WatchDetail extends Component {
     const quantity = this.state.quantity;
     if (AuthStore.user) {
       const item = this.props.navigation.getParam("watch");
-      cartStore.addItemsToCart(item, quantity);
+      console.log("HANDLE ADD TO CART", item);
+      cartStore.addItemToCart(item);
     } else {
       alert("you have to login.");
-      this.props.navigation.navigate("ProfileTab");
+      this.props.navigation.navigate("Login");
     }
   };
   handleQuantity = () => {

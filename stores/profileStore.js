@@ -1,5 +1,6 @@
 import axios from "axios";
 import { decorate, computed, observable } from "mobx";
+import { instance } from "./authStore";
 
 class ProfileStore {
   user = null;
@@ -7,9 +8,7 @@ class ProfileStore {
   retraiveUserProfile = async userobj => {
     console.log(userobj);
     try {
-      const res = await axios.get(
-        `http://127.0.0.1:8000/api/user/detail/${userobj.user_id}/`
-      );
+      const res = await instance.get(`user/detail/${userobj.user_id}/`);
       const user = res.data;
       this.user = user;
     } catch (error) {
@@ -19,10 +18,7 @@ class ProfileStore {
 
   editProfile = async (userProfileID, userData, navigation) => {
     try {
-      await axios.put(
-        `http://127.0.0.1:8000/api/profile/${userProfileID}/edit/`,
-        userData
-      );
+      await instance.put(`${userProfileID}/edit/`, userData);
       navigation.navigate("Profile");
     } catch (error) {
       console.log(error);

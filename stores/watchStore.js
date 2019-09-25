@@ -1,9 +1,6 @@
 import axios from "axios";
 import { decorate, observable, action, computed } from "mobx";
-
-const instance = axios.create({
-  baseURL: "http://127.0.0.1:8000/"
-});
+import { instance } from "./authStore";
 
 class WatchStore {
   watches = [];
@@ -12,7 +9,7 @@ class WatchStore {
 
   addWatch = async userData => {
     try {
-      await instance.post("api/create/", watch_obj);
+      await instance.post("create/", watch_obj);
       this.watches.push(watch_obj);
     } catch (error) {
       console.log("something went wrong registering", error.Date);
@@ -20,7 +17,7 @@ class WatchStore {
   };
   fetchAllPost = async () => {
     try {
-      const res = await instance.get("api/list/");
+      const res = await instance.get("list/");
       const watches = res.data;
       this.watches = watches;
       this.loading = false;
