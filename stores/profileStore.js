@@ -1,24 +1,24 @@
 import axios from "axios";
-import { decorate, computed, observable } from "mobx";
+import { decorate, observable } from "mobx";
 import { instance } from "./authStore";
 
 class ProfileStore {
-  user = null;
+  profile = null;
 
-  retraiveUserProfile = async userobj => {
-    console.log(userobj);
+  retrieveUserProfile = async profileobj => {
+    console.log(profileobj);
     try {
-      const res = await instance.get(`user/detail/${userobj.user_id}/`);
-      const user = res.data;
-      this.user = user;
+      const res = await instance.get(`profile/detail/`);
+      const profile = res.data;
+      this.profile = profile;
     } catch (error) {
-      console.log("error setting profile user", error);
+      console.log("error setting retrieve profile user", error);
     }
   };
 
-  editProfile = async (userProfileID, userData, navigation) => {
+  editProfile = async (userData, navigation) => {
     try {
-      await instance.put(`${userProfileID}/edit/`, userData);
+      await instance.put(`profile/update/`, userData);
       navigation.navigate("Profile");
     } catch (error) {
       console.log(error);
@@ -26,7 +26,7 @@ class ProfileStore {
   };
 }
 decorate(ProfileStore, {
-  user: observable
+  profile: observable
 });
 const profileStore = new ProfileStore();
 

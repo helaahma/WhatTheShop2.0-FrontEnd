@@ -46,6 +46,7 @@ class AuthStore {
       navigation.replace("Profile");
     } catch (err) {
       console.log("something went wrong logging in");
+      console.log("err", err);
     }
   };
 
