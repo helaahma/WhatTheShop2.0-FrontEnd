@@ -98,7 +98,7 @@ class ProfilePage extends Component {
                 </Right>
               </ListItem>
             )}
-            {/* <ListItem
+            <ListItem
               last
               Button
               style={{ marginTop: 5 }}
@@ -107,7 +107,7 @@ class ProfilePage extends Component {
               }
             >
               <Text>History Order</Text>
-            </ListItem> */}
+            </ListItem>
 
             <Button
               danger
