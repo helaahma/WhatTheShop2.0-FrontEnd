@@ -26,11 +26,8 @@ class Login extends Component {
     authStore.login(this.state, this.props.navigation);
   };
 
-  componentDidMount() {
-    if (authStore.user) this.props.navigation.replace("Profile");
-  }
-
   render() {
+    if (authStore.user) this.props.navigation.replace("Profile");
     return (
       <Container>
         <Content

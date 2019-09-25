@@ -28,7 +28,7 @@ class CartItem extends Component {
               />
               <Body>
                 <Text>{item.name}</Text>
-                <Text note>${item.total}</Text>
+                <Text note>KWD{item.total}</Text>
               </Body>
             </Left>
           </CardItem>

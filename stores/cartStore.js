@@ -1,13 +1,9 @@
 import axios from "axios";
 import { decorate, observable, action, computed } from "mobx";
-
-const instance = axios.create({
-  baseURL: "http://127.0.0.1:8000/"
-});
+import { instance } from "./authStore";
 
 class CartStore {
   carts = [];
-  cart = null;
   itemInCart = [];
   history = [];
   loadingHistory = true;
@@ -16,32 +12,43 @@ class CartStore {
   total = null;
   //   quantity = 1;
 
+  fetchBooks = async () => {
+    try {
+      const res = await instance.get("list/cart/");
+      this.carts = res.data;
+      this.loading = false;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   get filteredCarts() {
     return this.carts.filter(
       cart =>
         cart.name.toLowerCase().includes(this.query.toLowerCase()) ||
-        item.description.toLowerCase().includes(this.query.toLowerCase())
+        item.manufacture_year.toLowerCase().includes(this.query.toLowerCase())
     );
   }
-  addItemToCart = async watch => {
-    const foundItem = this.carts.find(
-      cartItem =>
-        cartItem.watch == watch.watches && cartItem.status == watch.status
-    );
-    try {
-      const res = await instance.post(`create/cart/${watch.id}/`);
-      const data = res.data;
-      this.cart = data;
-      this.total = watch.total;
 
-      this.loading = false;
-      console.log(data);
-      console.log(watch.total);
-    } catch (error) {
-      console.log(error);
-    }
+  addItemToCart = async watch => {
+    const foundItem = this.carts.find(cartItem => cartItem.id == watch.id);
+
     if (!foundItem) {
-      this.carts.push(item);
+      try {
+        const res = await instance.post(`create/cart/${watch.id}/`);
+        this.carts = res.data;
+        this.total = watch.total;
+        this.carts.push(carts);
+        this.loading = false;
+        this.statusMessage = "Success";
+        console.log(data);
+        console.log(watch.total);
+      } catch (error) {
+        this.statusMessage = error.response;
+      }
+    } else {
+      //set timeout
+      alert("The selected watch is already in cart.");
     }
   };
 
@@ -49,12 +56,13 @@ class CartStore {
     this.carts = this.carts.filter(cartItem => cartItem !== item);
   }
 
-  checkoutCart() {
+  checkOutCart() {
+    //watch status is set to false in the backend
     this.carts = [];
   }
   getHistoryOrder = async userId => {
     try {
-      const res = await instance.get("api/history/");
+      const res = await instance.get("history/");
       const data = res.data;
       this.carts = data;
 
