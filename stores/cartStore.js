@@ -1,6 +1,6 @@
-import axios from "axios";
 import { decorate, observable, action, computed } from "mobx";
 import { instance } from "./authStore";
+import fetchAllPost from "./watchStore";
 
 class CartStore {
   carts = [];
@@ -12,15 +12,15 @@ class CartStore {
   total = null;
   //   quantity = 1;
 
-  fetchBooks = async () => {
-    try {
-      const res = await instance.get("list/cart/");
-      this.carts = res.data;
-      this.loading = false;
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // fetchBooks = async () => {
+  //   try {
+  //     const res = await instance.get("list/cart/");
+  //     this.carts = res.data;
+  //     this.loading = false;
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   get filteredCarts() {
     return this.carts.filter(
@@ -52,14 +52,17 @@ class CartStore {
     }
   };
 
-  removeItemFromCart(item) {
+  removeItemFromCart = item => {
     this.carts = this.carts.filter(cartItem => cartItem !== item);
-  }
+  };
 
-  checkOutCart() {
+  checkOutCart = async () => {
     //watch status is set to false in the backend
+
     this.carts = [];
-  }
+    await instance.post("checkout/");
+    fetchAllPost();
+  };
   getHistoryOrder = async userId => {
     try {
       const res = await instance.get("history/");

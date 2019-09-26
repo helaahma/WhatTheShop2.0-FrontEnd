@@ -5,9 +5,9 @@ import ProfileScreen from "../components/Profile";
 import LoginScreen from "../components/Login";
 import RegistrationScreen from "../components/Registration";
 import EditProfile from "../components/Profile/editProfile";
-import Address from "../components/Address/Address";
-import EditAddress from "../components/Address/EditAddress";
-import ViewAddress from "../components/Address/ViewAddress";
+// import Address from "../components/Address/Address";
+// import EditAddress from "../components/Address/EditAddress";
+// import ViewAddress from "../components/Address/ViewAddress";
 import MainScreen from "../components/Main";
 
 const ProfileStack = createStackNavigator(
@@ -16,9 +16,9 @@ const ProfileStack = createStackNavigator(
     Login: LoginScreen,
     Register: RegistrationScreen,
     EditProfile: EditProfile,
-    Address: Address,
-    EditAddress: EditAddress,
-    ViewAddress: ViewAddress,
+    // Address: Address,
+    // EditAddress: EditAddress,
+    // ViewAddress: ViewAddress,
     Main: MainScreen
   },
   {
