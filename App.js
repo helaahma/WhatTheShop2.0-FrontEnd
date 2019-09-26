@@ -5,7 +5,7 @@ import { Spinner } from "native-base";
 
 export default class App extends Component {
   state = {
-    loading: false
+    loading: true
   };
 
   async componentDidMount() {

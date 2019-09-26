@@ -19,9 +19,9 @@ import { StyleSheet } from "react-native";
 
 class ProfilePage extends Component {
   componentDidMount() {
-    const user = authStore.user;
-    if (user) {
-      profileStore.retrieveUserProfile(user);
+    const token = authStore.user;
+    if (token) {
+      profileStore.retrieveUserProfile(token);
     }
   }
   render() {
@@ -42,7 +42,6 @@ class ProfilePage extends Component {
             <Text style={{ marginTop: 8, alignSelf: "center" }}>
               {user.user.username}
             </Text>
-
             <ListItem>
               <Text>
                 Name: {user.user.first_name} {user.user.last_name}
@@ -51,53 +50,10 @@ class ProfilePage extends Component {
             <ListItem>
               <Text>Email: {user.user.email}</Text>
             </ListItem>
-            {!user.phone_number ? (
-              <ListItem
-                Button
-                onPress={() =>
-                  navigation.navigate("EditProfile", { user: user })
-                }
-              >
-                <Text>Add Phone Number</Text>
-              </ListItem>
-            ) : (
-              <ListItem>
-                <Text>Phone: {user.user.phone_number}</Text>
-              </ListItem>
-            )}
+            <ListItem>
+              <Text>Phone: {user.phone_number}</Text>
+            </ListItem>
 
-            {!user.address ? (
-              <ListItem
-                Button
-                onPress={() => navigation.navigate("Address", { user: user })}
-              >
-                <Text>Create Address</Text>
-              </ListItem>
-            ) : (
-              <ListItem
-                last
-                Button
-                style={{ marginTop: 5 }}
-                onPress={() =>
-                  navigation.navigate("ViewAddress", { user: user })
-                }
-              >
-                <Left>
-                  <Text>Address</Text>
-                </Left>
-
-                <Right>
-                  <Button
-                    transparent
-                    onPress={() =>
-                      navigation.navigate("EditAddress", { user: user })
-                    }
-                  >
-                    <Text>Edit</Text>
-                  </Button>
-                </Right>
-              </ListItem>
-            )}
             <ListItem
               last
               Button
@@ -108,7 +64,6 @@ class ProfilePage extends Component {
             >
               <Text>History Order</Text>
             </ListItem>
-
             <Button
               danger
               style={{ marginTop: 8 }}

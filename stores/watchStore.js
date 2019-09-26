@@ -6,10 +6,11 @@ class WatchStore {
   loading = true;
   query = "";
 
-  addWatch = async userData => {
+  addWatch = async watch_obj => {
     try {
       await instance.post("create/", watch_obj);
       this.watches.push(watch_obj);
+      console.log("watch_obj", watch_obj);
     } catch (error) {
       console.log("something went wrong registering", error.Date);
     }
@@ -28,8 +29,9 @@ class WatchStore {
   get filteredWatches() {
     return this.watches.filter(
       watch =>
-        watch.model_name.toLowerCase().includes(this.query.toLowerCase()) ||
-        watch.brand.name.toLowerCase().includes(this.query.toLowerCase())
+        watch.availability &&
+        (watch.model_name.toLowerCase().includes(this.query.toLowerCase()) ||
+          watch.brand.name.toLowerCase().includes(this.query.toLowerCase()))
     );
   }
   getWatch = watchId => {
