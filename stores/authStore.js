@@ -6,6 +6,7 @@ import profileStore from "./profileStore";
 
 export const instance = axios.create({
   baseURL: "http://127.0.0.1:8000/api/"
+  //baseURL: "http://192.168.8.164:8000/api/"
 });
 
 class AuthStore {
@@ -20,7 +21,7 @@ class AuthStore {
       // Set current user
       user_obj = jwt_decode(token);
       this.user = user_obj;
-      profileStore.retraiveUserProfile(user_obj);
+      profileStore.retrieveUserProfile(user_obj);
     } else {
       await AsyncStorage.removeItem("myToken");
       delete instance.defaults.headers.common.Authorization;
