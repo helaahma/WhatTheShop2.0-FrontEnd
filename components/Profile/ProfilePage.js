@@ -21,11 +21,11 @@ class ProfilePage extends Component {
   componentDidMount() {
     const user = authStore.user;
     if (user) {
-      profileStore.retraiveUserProfile(user);
+      profileStore.retrieveUserProfile(user);
     }
   }
   render() {
-    const user = profileStore.user;
+    const user = profileStore.profile;
 
     const navigation = this.props.navigation;
 
