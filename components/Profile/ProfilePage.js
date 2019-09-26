@@ -47,8 +47,29 @@ class ProfilePage extends Component {
                 Name: {user.user.first_name} {user.user.last_name}
               </Text>
             </ListItem>
+            {user.user.email && (
+              <ListItem>
+                <Text>Email: {user.user.email}</Text>
+              </ListItem>
+            )}
+
             <ListItem>
-              <Text>Email: {user.user.email}</Text>
+              <Text>Country: {user.country}</Text>
+            </ListItem>
+            <ListItem>
+              <Text>City: {user.city}</Text>
+            </ListItem>
+            <ListItem>
+              <Text>Governate: {user.governate}</Text>
+            </ListItem>
+            <ListItem>
+              <Text>Zipcode: {user.zipcode}</Text>
+            </ListItem>
+            <ListItem>
+              <Text>Address: {user.street_line1}</Text>
+            </ListItem>
+            <ListItem>
+              <Text>Address line 2: {user.street_line2}</Text>
             </ListItem>
             <ListItem>
               <Text>Phone: {user.phone_number}</Text>

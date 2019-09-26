@@ -20,11 +20,7 @@ import cartStore from "../../stores/cartStore";
 import AuthStore from "../../stores/authStore";
 
 class WatchDetail extends Component {
-  state = {
-    quantity: 1
-  };
   handleAddingToCart = () => {
-    const quantity = this.state.quantity;
     if (AuthStore.user) {
       const item = this.props.navigation.getParam("watch");
       console.log("HANDLE ADD TO CART", item);
@@ -34,14 +30,7 @@ class WatchDetail extends Component {
       this.props.navigation.navigate("Login");
     }
   };
-  handleQuantity = () => {
-    const quantity = this.state.quantity;
-    if (quantity === 1) {
-      this.setState({ quantity: 0 });
-    } else {
-      this.setState({ quantity: 1 });
-    }
-  };
+
   render() {
     const watch = this.props.navigation.getParam("watch");
     return (
@@ -54,7 +43,9 @@ class WatchDetail extends Component {
         <CardItem>
           <Left>
             <Body>
-              <Text>{watch.name}</Text>
+              <Text>
+                {watch.brand} {watch.model_name}
+              </Text>
             </Body>
           </Left>
         </CardItem>
@@ -67,21 +58,12 @@ class WatchDetail extends Component {
         </CardItem>
         <CardItem>
           <Body>
-            <Text>{watch.description}</Text>
-
             <Text note>${watch.price}</Text>
           </Body>
         </CardItem>
 
         <CardItem>
-          <Button
-            transparent
-            style={{ marginHorizontal: 5, fontSize: 30 }}
-            onPress={this.handleQuantity}
-          >
-            <Text>Add/Remove</Text>
-          </Button>
-          <Label>{this.state.quantity} </Label>
+          <Label> add </Label>
 
           <Button transparent onPress={this.handleAddingToCart}>
             <Icon active type="MaterialIcons" name="add-shopping-cart" />

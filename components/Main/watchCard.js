@@ -33,7 +33,9 @@ class WatchCard extends Component {
                 style={{ height: 100, width: "40%", flex: 1 }}
               />
               <Body>
-                <Text style={styles.text}>{watch.name}</Text>
+                <Text style={styles.text}>
+                  {watch.brand} {watch.model_name}
+                </Text>
                 <Text note style={styles.textNote}>
                   ${watch.price}
                 </Text>

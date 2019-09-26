@@ -1,4 +1,3 @@
-import axios from "axios";
 import { decorate, observable } from "mobx";
 import { instance } from "./authStore";
 
