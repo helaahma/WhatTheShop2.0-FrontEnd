@@ -40,19 +40,12 @@ class ProfilePage extends Component {
         <Container style={styles.container}>
           <Content>
             <Text style={{ marginTop: 8, alignSelf: "center" }}>
-              {user.user.username}
+              {user.user.first_name} {user.user.last_name}
             </Text>
-            <ListItem>
-              <Text>
-                Name: {user.user.first_name} {user.user.last_name}
-              </Text>
-            </ListItem>
-            {user.user.email && (
-              <ListItem>
-                <Text>Email: {user.user.email}</Text>
-              </ListItem>
-            )}
 
+            <ListItem>
+              <Text>Email: {user.user.email}</Text>
+            </ListItem>
             <ListItem>
               <Text>Country: {user.country}</Text>
             </ListItem>
@@ -85,6 +78,7 @@ class ProfilePage extends Component {
             >
               <Text>History Order</Text>
             </ListItem>
+
             <Button
               danger
               style={{ marginTop: 8 }}
