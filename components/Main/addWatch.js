@@ -176,14 +176,7 @@ class AddWatch extends Component {
                 onChangeText={description => this.setState({ description })}
               />
             </Item>
-            <Item last>
-              <Input
-                placeholder="image"
-                autoCapitalize="none"
-                autoCorrect={false}
-                onChangeText={image => this.setState({ image })}
-              />
-            </Item>
+
             <Button full onPress={() => this.handlesubmit()}>
               <Text>Add Watch</Text>
             </Button>
