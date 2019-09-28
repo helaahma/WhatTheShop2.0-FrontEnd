@@ -19,6 +19,7 @@ class ProfileStore {
     try {
       await instance.put(`profile/update/`, userData);
       navigation.navigate("Profile");
+      this.retrieveUserProfile(userData);
     } catch (error) {
       console.log(error);
     }

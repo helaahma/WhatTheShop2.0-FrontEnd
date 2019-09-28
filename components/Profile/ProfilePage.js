@@ -4,10 +4,8 @@ import profileStore from "../../stores/profileStore";
 import {
   Collapse,
   CollapseHeader,
-  CollapseBody,
-  AccordionList
+  CollapseBody
 } from "accordion-collapse-react-native";
-import watchStore from "../../stores/watchStore";
 
 import {
   Container,
@@ -50,11 +48,11 @@ class ProfilePage extends Component {
         <Container style={styles.container}>
           <Content>
             <Text style={{ marginTop: 8, alignSelf: "center" }}>
-              Hello {user.user.first_name} {user.user.last_name}
+              Hello {user.first_name} {user.last_name}
             </Text>
 
             <ListItem>
-              <Text>Email: {user.user.email}</Text>
+              <Text>Email: {user.email}</Text>
             </ListItem>
             <Collapse>
               <CollapseHeader>
@@ -112,7 +110,7 @@ class ProfilePage extends Component {
             <Button
               danger
               style={{ marginTop: 8 }}
-              onPress={() => authStore.logout(navigation)}
+              onPress={() => navigation.navigate("AddWatch")}
             >
               <Text>Add Watch</Text>
             </Button>

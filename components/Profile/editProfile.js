@@ -1,20 +1,12 @@
 import React, { Component } from "react";
-import {
-  Form,
-  Item,
-  Input,
-  Button,
-  Text,
-  Container,
-  Content
-} from "native-base";
+import { Item, Input, Button, Text, Container, Content } from "native-base";
 import profileStore from "../../stores/profileStore";
 
 class EditProfile extends Component {
   state = {
-    first_name: this.props.navigation.getParam("profile").user.first_name,
-    last_name: this.props.navigation.getParam("profile").user.last_name,
-    email: this.props.navigation.getParam("profile").user.email,
+    first_name: this.props.navigation.getParam("profile").first_name,
+    last_name: this.props.navigation.getParam("profile").last_name,
+    email: this.props.navigation.getParam("profile").email,
     Country: this.props.navigation.getParam("profile").Country,
     city: this.props.navigation.getParam("profile").city,
     governate: this.props.navigation.getParam("profile").governate,
@@ -35,7 +27,7 @@ class EditProfile extends Component {
       <Container>
         <>
           <Input
-            placeholder={this.state.first_name}
+            placeholder="first name"
             onChangeText={first_name => this.setState({ first_name })}
           />
           <Input
@@ -59,7 +51,7 @@ class EditProfile extends Component {
             onChangeText={governate => this.setState({ governate })}
           />
           <Input
-            placeholder={this.state.zipcode}
+            placeholder="zipcode"
             onChangeText={zipcode => this.setState({ zipcode })}
           />
           <Input
