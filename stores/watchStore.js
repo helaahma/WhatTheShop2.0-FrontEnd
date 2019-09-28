@@ -5,6 +5,7 @@ class WatchStore {
   watches = [];
   loading = true;
   query = "";
+  availability = true;
 
   addWatch = async watch_obj => {
     try {
@@ -38,12 +39,22 @@ class WatchStore {
   getWatch = watchId => {
     return this.watches.find(watchIn => +watchIn.id === +watchId);
   };
+  handleUpdate = async watch => {
+    try {
+      const res = await instance.get(`update/${watch.id}`);
+      const watch = res.data;
+      watch.availability = !watch.availability;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
 
 decorate(WatchStore, {
   watches: observable,
   loading: observable,
   query: observable,
+  availability: observable,
   filteredWatches: computed
 });
 
