@@ -24,12 +24,19 @@ class ProfilePage extends Component {
       profileStore.retrieveUserProfile(token);
     }
   }
-  render() {
-    const user = profileStore.profile;
+  // componentDidUpdate() {
+  //   profileStore.retrieveUserProfile();
+  // }
 
+  render() {
+    console.log("[ProfilePage.js] render");
+    let user = authStore.user;
+    console.log("[ProfilePage.js] user: ", user);
+    let profile = profileStore.profile;
+    console.log("[ProfilePage.js] profile: ", profile);
     const navigation = this.props.navigation;
 
-    if (!user) {
+    if (!profile) {
       return (
         <View>
           <Text>loading</Text>
@@ -40,39 +47,39 @@ class ProfilePage extends Component {
         <Container style={styles.container}>
           <Content>
             <Text style={{ marginTop: 8, alignSelf: "center" }}>
-              {user.user.username}
+              {profile.user.username}
             </Text>
             <ListItem>
               <Text>
-                Name: {user.user.first_name} {user.user.last_name}
+                Name: {profile.user.first_name} {profile.user.last_name}
               </Text>
             </ListItem>
-            {user.user.email && (
+            {profile.user.email && (
               <ListItem>
-                <Text>Email: {user.user.email}</Text>
+                <Text>Email: {profile.user.email}</Text>
               </ListItem>
             )}
 
             <ListItem>
-              <Text>Country: {user.country}</Text>
+              <Text>Country: {profile.country}</Text>
             </ListItem>
             <ListItem>
-              <Text>City: {user.city}</Text>
+              <Text>City: {profile.city}</Text>
             </ListItem>
             <ListItem>
-              <Text>Governate: {user.governate}</Text>
+              <Text>Governate: {profile.governate}</Text>
             </ListItem>
             <ListItem>
-              <Text>Zipcode: {user.zipcode}</Text>
+              <Text>Zipcode: {profile.zipcode}</Text>
             </ListItem>
             <ListItem>
-              <Text>Address: {user.street_line1}</Text>
+              <Text>Address: {profile.street_line1}</Text>
             </ListItem>
             <ListItem>
-              <Text>Address line 2: {user.street_line2}</Text>
+              <Text>Address line 2: {profile.street_line2}</Text>
             </ListItem>
             <ListItem>
-              <Text>Phone: {user.phone_number}</Text>
+              <Text>Phone: {profile.phone_number}</Text>
             </ListItem>
 
             <ListItem
@@ -80,7 +87,7 @@ class ProfilePage extends Component {
               Button
               style={{ marginTop: 5 }}
               onPress={() =>
-                navigation.navigate("orderHistory", { user: user })
+                navigation.navigate("OrderHistory", { user: user })
               }
             >
               <Text>History Order</Text>

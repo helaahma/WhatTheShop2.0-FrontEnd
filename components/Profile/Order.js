@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import cartStore from "../../stores/cartStore";
 import {
   Container,
   Header,
@@ -10,7 +11,7 @@ import {
   Right,
   Icon
 } from "native-base";
-import cartStore from "../../stores/CartStore";
+
 class Order extends Component {
   render() {
     const order = this.props.order;

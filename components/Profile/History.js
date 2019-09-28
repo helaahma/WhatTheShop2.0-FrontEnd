@@ -11,14 +11,20 @@ import {
   Icon,
   Spinner
 } from "native-base";
-import cartStore from "../../stores/CartStore";
+import cartStore from "../../stores/cartStore";
 import Order from "./Order";
 import { observer } from "mobx-react";
 
 class OrderHistory extends Component {
   componentDidMount() {
-    const userId = this.props.navigation.getParam("user").id;
+    let userId = this.props.navigation.getParam("user");
+    userId = userId.id;
+    console.log("[History.js], userID", userId);
     cartStore.getHistoryOrder(userId);
+    console.log(
+      "[History.js], getHistoryOrder",
+      cartStore.getHistoryOrder(userId)
+    );
   }
   render() {
     if (cartStore.loadingHistory) {
