@@ -23,6 +23,7 @@
     "react-native-elements": "^1.2.1",
     "react-native-gesture-handler": "~1.2.1",
     "react-native-reanimated": "1.0.0-alpha.12",
+    "react-native-scrolling": "^1.0.3",
     "react-native-select-input-ios": "^2.0.2",
     "react-native-web": "^0.11.4",
     "react-navigation": "^4.0.2",
