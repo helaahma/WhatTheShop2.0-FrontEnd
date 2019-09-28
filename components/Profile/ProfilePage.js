@@ -4,10 +4,8 @@ import profileStore from "../../stores/profileStore";
 import {
   Collapse,
   CollapseHeader,
-  CollapseBody,
-  AccordionList
+  CollapseBody
 } from "accordion-collapse-react-native";
-import watchStore from "../../stores/watchStore";
 
 import {
   Container,

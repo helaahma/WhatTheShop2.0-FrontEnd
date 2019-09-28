@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import {
-  Form,
-  Item,
-  Input,
-  Button,
-  Text,
-  Container,
-  Content
-} from "native-base";
+import { Item, Input, Button, Text, Container, Content } from "native-base";
 import profileStore from "../../stores/profileStore";
 
 class EditProfile extends Component {

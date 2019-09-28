@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { observer } from "mobx-react";
-import { KeyboardAvoidingView, ScrollView } from "react-native";
+import { StyleSheet, ScrollView } from "react-native";
 
 // NativeBase Components
 
