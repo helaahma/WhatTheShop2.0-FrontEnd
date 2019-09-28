@@ -47,9 +47,15 @@ class ProfilePage extends Component {
         <Container style={styles.container}>
           <Content>
             <Text style={{ marginTop: 8, alignSelf: "center" }}>
+<<<<<<< HEAD
               {profile.user.username}
+=======
+              {user.user.first_name} {user.user.last_name}
+>>>>>>> dd76ac355131efb9bec6a69527ed9ec296296b6c
             </Text>
+
             <ListItem>
+<<<<<<< HEAD
               <Text>
                 Name: {profile.user.first_name} {profile.user.last_name}
               </Text>
@@ -60,6 +66,10 @@ class ProfilePage extends Component {
               </ListItem>
             )}
 
+=======
+              <Text>Email: {user.user.email}</Text>
+            </ListItem>
+>>>>>>> dd76ac355131efb9bec6a69527ed9ec296296b6c
             <ListItem>
               <Text>Country: {profile.country}</Text>
             </ListItem>
@@ -92,6 +102,7 @@ class ProfilePage extends Component {
             >
               <Text>History Order</Text>
             </ListItem>
+
             <Button
               danger
               style={{ marginTop: 8 }}
