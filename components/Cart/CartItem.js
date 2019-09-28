@@ -8,8 +8,8 @@ import { observer } from "mobx-react";
 class CartItem extends Component {
   render() {
     const item = this.props.item;
-    const { navigate } = this.props.navigation.navigate;
-    let total;
+    const navigate = this.props.navigation.navigate;
+    console.log("[Cartitem.js] item:", item);
 
     return (
       <Card>
@@ -27,8 +27,11 @@ class CartItem extends Component {
                 style={{ height: 150, width: null, flex: 1 }}
               />
               <Body>
-                <Text>{item.name}</Text>
-                <Text note>KWD{item.total}</Text>
+                <Text>Brand: {item.watch.brand}</Text>
+                <Text>Model name: {item.watch.model_name}</Text>
+                <Text>{item.status}</Text>
+                <Text note>KWD {item.total}</Text>
+                <Text>Manufacture year: {item.watch.manufacture_year}</Text>
               </Body>
             </Left>
           </CardItem>

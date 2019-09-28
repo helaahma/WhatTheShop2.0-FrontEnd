@@ -5,8 +5,10 @@ import jwt_decode from "jwt-decode";
 import profileStore from "./profileStore";
 
 export const instance = axios.create({
-  // baseURL: "http://127.0.0.1:8000/api/"
-  baseURL: "http://192.168.43.160:8000/api/"
+
+  baseURL: "http://127.0.0.1:8000/api/"
+  // baseURL: "http://192.168.8.144:8000/api/"
+
 });
 
 class AuthStore {
