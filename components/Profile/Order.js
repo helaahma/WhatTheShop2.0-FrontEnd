@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import cartStore from "../../stores/cartStore";
+import { observer } from "mobx-react";
 import {
   Container,
   Header,
@@ -38,7 +39,7 @@ class Order extends Component {
           <Button
             full
             style={{ marginBottom: 10, marginTop: 5 }}
-            onPress={this.handlesubmit}
+            onPress={() => this.handlesubmit(order.watches)}
           >
             <Text> avialability</Text>
           </Button>
@@ -47,4 +48,4 @@ class Order extends Component {
     );
   }
 }
-export default Order;
+export default observer(Order);

@@ -5,7 +5,6 @@ class WatchStore {
   watches = [];
   loading = true;
   query = "";
-  availability = true;
 
   addWatch = async watch_obj => {
     try {
@@ -41,9 +40,11 @@ class WatchStore {
   };
   handleUpdate = async watch => {
     try {
-      const res = await instance.get(`update/${watch.id}`);
-      const watch = res.data;
-      watch.availability = !watch.availability;
+      const res = await instance.put(`update/${watch.id}`, {
+        availability: true
+      });
+      const res_watch = res.data;
+      res_watch.availability = !res_watch.availability;
     } catch (error) {
       console.log(error);
     }

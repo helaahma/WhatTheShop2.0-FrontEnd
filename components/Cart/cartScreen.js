@@ -68,7 +68,6 @@ class cartScreen extends Component {
           <Icon name="check-circle" type="FontAwesome" />
           <Button style={{ backgroundColor: "#o2c39a" }} />
         </Fab>
-        <Label>KWD {cartStore.total}</Label>
       </Container>
     );
   }
