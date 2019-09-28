@@ -33,6 +33,7 @@ class WatchDetail extends Component {
 
   render() {
     const watch = this.props.navigation.getParam("watch");
+    console.log("[watch Detail.js] watch:", watch);
     return (
       <Card
         style={{

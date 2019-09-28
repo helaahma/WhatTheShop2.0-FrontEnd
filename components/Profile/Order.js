@@ -39,7 +39,7 @@ class Order extends Component {
           <Button
             full
             style={{ marginBottom: 10, marginTop: 5 }}
-            onPress={() => this.handlesubmit(order.watches)}
+            onPress={this.handlesubmit}
           >
             <Text> avialability</Text>
           </Button>

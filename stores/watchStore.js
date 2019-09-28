@@ -40,11 +40,13 @@ class WatchStore {
   };
   handleUpdate = async watch => {
     try {
-      const res = await instance.put(`update/${watch.id}`, {
-        availability: true
-      });
+      //need to send watch id using relations
+      const res = await instance.put(`update/${watch.id}/`);
+      // const res = await instance.put(`update/${watch.id}`, {
+      //   availability: true
+      // });
       const res_watch = res.data;
-      res_watch.availability = !res_watch.availability;
+      this.fetchAllPost;
     } catch (error) {
       console.log(error);
     }
@@ -55,7 +57,6 @@ decorate(WatchStore, {
   watches: observable,
   loading: observable,
   query: observable,
-  availability: observable,
   filteredWatches: computed
 });
 
