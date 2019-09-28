@@ -6,17 +6,22 @@ import {
   Content,
   List,
   ListItem,
+  Button,
   Text,
   Left,
   Right,
   Icon
 } from "native-base";
+import watchStore from "../../stores/watchStore";
 
 class Order extends Component {
+  handlesubmit = () => {
+    watchStore.handleUpdate();
+  };
   render() {
     const order = this.props.order;
+    console.log("Order", order);
     const cartId = order.id;
-    const m = cartStore.getHistoryCartItem(cartId);
     return (
       <>
         <List>
@@ -28,10 +33,16 @@ class Order extends Component {
               this.props.navigation.navigate("Detail", { cartId: cartId })
             }
           >
-            <Text>{order.timestamp}</Text>
+            <Text>{order.id}</Text>
           </ListItem>
+          <Button
+            full
+            style={{ marginBottom: 10, marginTop: 5 }}
+            onPress={this.handlesubmit}
+          >
+            <Text> avialability</Text>
+          </Button>
         </List>
-        <Text />
       </>
     );
   }

@@ -76,7 +76,7 @@ class ProfilePage extends Component {
               Button
               style={{ marginTop: 5 }}
               onPress={() =>
-                navigation.navigate("orderHistory", { user: user })
+                navigation.navigate("OrderHistory", { user: user })
               }
             >
               <Text>History Order</Text>

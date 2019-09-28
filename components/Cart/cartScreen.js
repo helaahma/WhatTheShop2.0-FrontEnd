@@ -42,6 +42,14 @@ class cartScreen extends Component {
   render() {
     let cartItems;
 
+    <Button
+      danger
+      style={{ marginTop: 8 }}
+      onPress={() => authStore.logout(this.props.navigation)}
+    >
+      <Text>Logout</Text>
+    </Button>;
+
     if (cartStore.carts.length) {
       cartItems = cartStore.carts.map(item => {
         return <CartItem key={item.id} item={item} />;

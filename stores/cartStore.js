@@ -22,33 +22,27 @@ class CartStore {
   //   }
   // };
 
-  get filteredCarts() {
-    return this.carts.filter(
-      cart =>
-        cart.name.toLowerCase().includes(this.query.toLowerCase()) ||
-        item.manufacture_year.toLowerCase().includes(this.query.toLowerCase())
-    );
-  }
+  // get filteredCarts() {
+  //   return this.carts.filter(
+  //     cart =>
+  //       cart.name.toLowerCase().includes(this.query.toLowerCase()) ||
+  //       item.manufacture_year.toLowerCase().includes(this.query.toLowerCase())
+  //   );
+  // }
 
   addItemToCart = async watch => {
-    const foundItem = this.carts.find(cartItem => cartItem.id == watch.id);
-
-    if (!foundItem) {
-      try {
-        const res = await instance.post(`create/cart/${watch.id}/`);
-        this.carts = res.data;
-        this.total = watch.total;
-        this.carts.push(carts);
-        this.loading = false;
-        this.statusMessage = "Success";
-        console.log(data);
-        console.log(watch.total);
-      } catch (error) {
-        this.statusMessage = error.response;
-      }
-    } else {
-      //set timeout
-      alert("The selected watch is already in cart.");
+    try {
+      const res = await instance.post(`create/cart/${watch.id}/`);
+      let cartObj = res.data;
+      console.log("[cartStore.js cartObj: ]", cartObj);
+      this.total = watch.total;
+      this.carts.push(cartObj);
+      this.loading = false;
+      this.statusMessage = "Success";
+      console.log(data);
+      console.log(watch.total);
+    } catch (error) {
+      this.statusMessage = error.response;
     }
   };
 
@@ -60,18 +54,18 @@ class CartStore {
     //watch status is set to false in the backend
 
     this.carts = [];
-    await instance.post("checkout/");
+    await instance.get("checkout/");
     fetchAllPost();
   };
   getHistoryOrder = async userId => {
     try {
       const res = await instance.get("history/");
       const data = res.data;
-      this.carts = data;
-
-      this.history = this.carts.filter(
-        userCart => userCart.user === userId && userCart.status === true
-      );
+      console.log("[cartStore.js] data: ", data);
+      this.history = data;
+      // this.history = this.carts.filter(
+      //   userCart => userCart.user === userId && userCart.status === true
+      // );
       this.loadingHistory = false;
     } catch (error) {
       console.log(error);
@@ -89,8 +83,7 @@ decorate(CartStore, {
   history: observable,
   addItemToCart: action,
   removeItemFromCart: action,
-  checkoutCart: action,
-  filteredCarts: computed
+  checkoutCart: action
 });
 
 const cartStore = new CartStore();
