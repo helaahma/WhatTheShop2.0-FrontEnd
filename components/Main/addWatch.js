@@ -167,8 +167,8 @@ class AddWatch extends Component {
                 autoCorrect={false}
                 onChangeText={delivery => this.setState({ delivery })}
               />
-            </Item>{" "}
-            <Item>
+            </Item>
+            <Item last>
               <Input
                 placeholder="description"
                 autoCapitalize="none"

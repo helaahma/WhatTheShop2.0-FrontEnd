@@ -10,22 +10,22 @@ import {
 } from "native-base";
 import profileStore from "../../stores/profileStore";
 
-profile = profileStore.profile;
-
 class EditProfile extends Component {
   state = {
-    first_name: profile.user.first_name,
-    last_name: profile.user.last_name,
-    email: profile.user.email,
-    Country: profile.Country,
-    city: profile.city,
-    governate: profile.governate,
-    zipcode: profile.zipcode,
-    street_line1: profile.street_line1,
-    street_line2: profile.street_line2,
-    phone: profile.phone
+    first_name: this.props.navigation.getParam("profile").user.first_name,
+    last_name: this.props.navigation.getParam("profile").user.last_name,
+    email: this.props.navigation.getParam("profile").user.email,
+    Country: this.props.navigation.getParam("profile").Country,
+    city: this.props.navigation.getParam("profile").city,
+    governate: this.props.navigation.getParam("profile").governate,
+    zipcode: this.props.navigation.getParam("profile").zipcode,
+    street_line1: this.props.navigation.getParam("profile").street_line1,
+    street_line2: this.props.navigation.getParam("profile").street_line2,
+    phone: this.props.navigation.getParam("profile").phone
   };
-
+  componentDidMount() {
+    console.log("[editProfile.js], profile");
+  }
   handleEditProfile = ProfileUpdate => {
     const navigation = this.props.navigation;
     profileStore.editProfile(ProfileUpdate, navigation);
@@ -35,7 +35,7 @@ class EditProfile extends Component {
       <Container>
         <>
           <Input
-            placeholder="first name"
+            placeholder={this.state.first_name}
             onChangeText={first_name => this.setState({ first_name })}
           />
           <Input
@@ -59,7 +59,7 @@ class EditProfile extends Component {
             onChangeText={governate => this.setState({ governate })}
           />
           <Input
-            placeholder="zipcode"
+            placeholder={this.state.zipcode}
             onChangeText={zipcode => this.setState({ zipcode })}
           />
           <Input
