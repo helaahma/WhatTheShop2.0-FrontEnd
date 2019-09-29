@@ -45,7 +45,7 @@ class ProfilePage extends Component {
       );
     } else {
       return (
-        <Container style={styles.container}>
+        <Container>
           <Content>
             <Text style={{ marginTop: 8, alignSelf: "center" }}>
               Hello {user.first_name} {user.last_name}
